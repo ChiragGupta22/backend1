@@ -33,7 +33,7 @@ const registerUser = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "7d" },
     );
-    app.set("trust proxy", 1);
+
     res.cookie("token", token, {
       httpOnly: true,
       sameSite: "none",

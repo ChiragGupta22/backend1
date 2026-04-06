@@ -5,7 +5,7 @@ const authRoutes = require("./routes/auth.router");
 const cors = require("cors");
 
 const app = express();
-
+app.set("trust proxy", 1);
 const corsOptions = {
   origin: "https://frontend1-ecru-zeta.vercel.app",
   credentials: true,
