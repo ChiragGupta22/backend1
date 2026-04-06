@@ -6,31 +6,19 @@ const cors = require("cors");
 
 const app = express();
 
-// ✅ CORS OPTIONS
 const corsOptions = {
-  origin: "https://frontend1-ecru-zeta.vercel.app",
+  origin: function (origin, callback) {
+    callback(null, true); // 👈 allow all origins (for testing)
+  },
   credentials: true,
 };
 
-// ✅ APPLY CORS FIRST
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 
-// ✅ MANUAL HEADERS (separate)
-app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://frontend1-ecru-zeta.vercel.app",
-  );
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
-
-// ✅ OTHER MIDDLEWARE
 app.use(express.json());
 app.use(cookieParser());
 
-// ✅ ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/todo", todoRoutes);
 
