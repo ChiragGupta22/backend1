@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://backend1-1-f2a5.onrender.com",
+    origin: "https://frontend1-ecru-zeta.vercel.app",
     credentials: true,
   }),
 );
