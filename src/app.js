@@ -1,18 +1,17 @@
 const express = require("express");
 const todoRoutes = require("./routes/todo.router");
-const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/auth.router");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const app = express();
-app.set("trust proxy", 1);
-const corsOptions = {
-  origin: "frontend1-ochre-theta.vercel.app",
-  credentials: true,
-};
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 app.use(cookieParser());
