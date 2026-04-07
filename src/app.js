@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 app.set("trust proxy", 1);
 const corsOptions = {
-  origin: "https://frontend1-ecru-zeta.vercel.app",
+  origin: "frontend1-ochre-theta.vercel.app",
   credentials: true,
 };
 
