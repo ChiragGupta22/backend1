@@ -10,6 +10,8 @@ const registerUser = async (req, res) => {
       $or: [{ email }, { username }],
     });
 
+    await user.save();
+
     if (existingUser) {
       return res.status(409).json({
         message: "User already exists",
@@ -36,8 +38,9 @@ const registerUser = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "none",
-      secure: true,
+      sameSite: "lax",
+      secure: false,
+      maxAge: 1000 * 60 * 60 * 24,
     });
 
     res.status(201).json({
@@ -86,8 +89,9 @@ const loginUser = async (req, res) => {
 
   res.cookie("token", token, {
     httpOnly: true,
-    sameSite: "none",
-    secure: true,
+    sameSite: "lax",
+    secure: false,
+    maxAge: 1000 * 60 * 60 * 24,
   });
   res.status(200).json({
     message: "sent data successfully",
