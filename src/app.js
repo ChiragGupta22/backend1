@@ -12,9 +12,11 @@ app.use(
     credentials: true,
   }),
 );
+app.options("*", cors());
 
 app.use(express.json());
 app.use(cookieParser());
+app.set("trust proxy", 1);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/todo", todoRoutes);
