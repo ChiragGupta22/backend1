@@ -102,13 +102,13 @@ const logoutUser = async (req, res) => {
     message: "User is Logout",
   });
 };
-const getMe = async (req, res) => {
-  try {
-    res.status(200).json({
-      user: req.user,
-    });
-  } catch (error) {
-    res.status(500).json({ message: "Error" });
-  }
-};
-module.exports = { registerUser, loginUser, logoutUser, getMe };
+// const getMe = async (req, res) => {
+//   try {
+//     res.status(200).json({
+//       user: req.user,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ message: "Error" });
+//   }
+// };
+module.exports = { registerUser, loginUser, logoutUser };
