@@ -8,7 +8,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://frontend1-pink-pi.vercel.app",
+    origin: "https://frontend1-beige-nine.vercel.app",
     credentials: true,
   }),
 );
