@@ -2,6 +2,9 @@ const todoModel = require("../model/todo.model");
 
 const addTask = async (req, res) => {
   try {
+    if (!req.user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
     const todo = await todoModel.create({
       ...req.body,
       user: req.user.id,
